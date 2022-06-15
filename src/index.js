@@ -18,6 +18,8 @@ class DelayQueue {
         this.reconnecting = false
         this.registering = false
         this.maxResentCount = 100
+        // dead queue message ttl
+        this.messageTtl = 1000*60*60*24
     }
     listen(url, options) {
         let that = this
@@ -141,7 +143,7 @@ class DelayQueue {
         let that = this
         that.channel.assertExchange(exchange, "direct", {durable: true})
         // create business queue
-        let exOptions = {deadLetterExchange: exchange, messageTtl: 1000*60*60*24*30, durable: true, deadLetterRoutingKey: `${routingKey}.dead`}
+        let exOptions = {deadLetterExchange: exchange, messageTtl: that.messageTtl, durable: true, deadLetterRoutingKey: `${routingKey}.dead`}
         that.channel.assertQueue(routingKey, exOptions, function (error, q) {
             if (error) {
                 return log.fatal(error)
