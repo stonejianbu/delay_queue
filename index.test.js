@@ -1,7 +1,5 @@
-# delay_queue
-Delay queue implementation that base on rabbitmq dead queue and messageTtl.
+const DelayQueue = require("./index")
 
-```javascript
 let dl = new DelayQueue()
 dl.createDelayQueue("order", "updateOrder", [1000, 3000, 5000, 10000, 20000], function (msg, callback) {
     let message = JSON.parse(msg.content.toString())
@@ -11,6 +9,5 @@ dl.createDelayQueue("order", "updateOrder", [1000, 3000, 5000, 10000, 20000], fu
     callback()
 })
 
-dl.listen("amqp://<username>:<password>@<host>:<ip>/<vhost>")
+dl.listen("amqp://test:test@81.68.200.136/test")
 dl.sendDelayMessage("order", "updateOrder", `test message ${Math.random()}`)
-```

@@ -1,0 +1,31 @@
+{
+  "name": "delay_queue",
+  "version": "0.1.0",
+  "description": "Delay queue implementation that base on rabbitmq dead queue and messageTtl.",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stonejianbu/delay_queue.git"
+  },
+  "keywords": [
+    "delay_queue",
+    "rabbitmq",
+    "pushlish",
+    "subscribe",
+    "queue"
+  ],
+  "author": "stonejianbu",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/stonejianbu/delay_queue/issues"
+  },
+  "homepage": "https://github.com/stonejianbu/delay_queue#readme",
+  "dependencies": {
+    "amqplib": "^0.10.0",
+    "moment": "^2.29.3",
+    "uuid": "^8.3.2"
+  }
+}
