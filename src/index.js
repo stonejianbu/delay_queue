@@ -166,7 +166,7 @@ class DelayQueue {
                         }
                         return that.channel.ack(msg)
                     }
-                    log.warn(msgContent.messageId, "processed successfully")
+                    log.info(msgContent.messageId, "processed successfully")
                     that.channel.ack(msg)
                 })
             })
@@ -195,7 +195,7 @@ class DelayQueue {
         }
     }
     sendDelayMessage(exchange, routingKey, message, options) {
-        let msg = {messageId: v4(), retryCount: 0, content: message}
+        let msg = {messageId: v4(), retryCount: 0, content: message, exchange, routingKey}
         routingKey = `${routingKey}-delayed`
         this.emitter.emit("publish", exchange, routingKey, msg, options)
     }
